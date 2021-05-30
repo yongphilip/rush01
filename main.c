@@ -643,122 +643,122 @@ int main(int argc, char *argv[])
         }
 
         // Check Clues
-        // for (int a = 0; a < size; a++)
-        // {
-        //     for (int b = 0; b < size; b++)
-        //     {
-        //         if (a == 0)
-        //         {
-        //             if (clue[a][b] == size - 1)
-        //             {
-        //                 for (int i = (size - clue[a][b]) + 1; i < size; i++)
-        //                 {
-        //                     gridRemains[0][b][i] = 1;
-        //                 }
+        for (int a = 0; a < size; a++)
+        {
+            for (int b = 0; b < size; b++)
+            {
+                if (a == 0)
+                {
+                    if (clue[a][b] == size - 1)
+                    {
+                        for (int i = (size - clue[a][b]) + 1; i < size; i++)
+                        {
+                            gridRemains[0][b][i] = 1;
+                        }
                         
-        //                 if (grid[0][b] == size - 2 && grid[2][b] == size)
-        //                 {
-        //                     printf("yes1\n");
-        //                     grid[1][b] = size - 1;
+                        if (grid[0][b] == size - 2 && grid[2][b] == size)
+                        {
+                            printf("yes1\n");
+                            grid[1][b] = size - 1;
 
-        //                     usedIndex[size - 2][0][0]++;
-        //                     usedIndex[size - 2][1][b] = 1;
-        //                     usedIndex[size - 2][2][a] = 1;
-        //                 }
-        //             }  
-        //         }
-        //         else if (a == 1)
-        //         {
-        //             if (clue[a][b] == size - 1)
-        //             {
-        //                 for (int i = (size - clue[a][b]) + 1; i < size; i++)
-        //                 {
-        //                     gridRemains[3][b][i] = 1;
-        //                 }
-        //             }
-        //         }
-        //         else if (a == 2)
-        //         {
-        //             if (clue[a][b] == size - 1)
-        //             {
-        //                 for (int i = (size - clue[a][b]) + 1; i < size; i++)
-        //                 {
-        //                     gridRemains[b][0][i] = 1;
-        //                 }
-        //             }
-        //         }
-        //         else
-        //         {
-        //             if (clue[a][b] == size - 1)
-        //             {
-        //                 for (int i = (size - clue[a][b]) + 1; i < size; i++)
-        //                 {
-        //                     gridRemains[b][3][i] = 1;
-        //                 }
-        //             }
-        //         }
+                            usedIndex[size - 2][0][0]++;
+                            usedIndex[size - 2][1][b] = 1;
+                            usedIndex[size - 2][2][a] = 1;
+                        }
+                    }  
+                }
+                else if (a == 1)
+                {
+                    if (clue[a][b] == size - 1)
+                    {
+                        for (int i = (size - clue[a][b]) + 1; i < size; i++)
+                        {
+                            gridRemains[3][b][i] = 1;
+                        }
+                    }
+                }
+                else if (a == 2)
+                {
+                    if (clue[a][b] == size - 1)
+                    {
+                        for (int i = (size - clue[a][b]) + 1; i < size; i++)
+                        {
+                            gridRemains[b][0][i] = 1;
+                        }
+                    }
+                }
+                else
+                {
+                    if (clue[a][b] == size - 1)
+                    {
+                        for (int i = (size - clue[a][b]) + 1; i < size; i++)
+                        {
+                            gridRemains[b][3][i] = 1;
+                        }
+                    }
+                }
 
-        //         int countRemains = 0;
+                int countRemains = 0;
 
-        //         for (int i = 0; i < size; i++)
-        //         {
-        //             if (gridRemains[a][b][i] == 1)
-        //             {
-        //                 countRemains++;
-        //             }
-        //         }
+                for (int i = 0; i < size; i++)
+                {
+                    if (gridRemains[a][b][i] == 1)
+                    {
+                        countRemains++;
+                    }
+                }
 
-        //         if (countRemains == 3)
-        //         {
-        //             for (int i = 0; i < size; i++)
-        //             {
-        //                 if (gridRemains[a][b][i] == 0)
-        //                 {
-        //                     grid[a][b] = i + 1;
-        //                     gridRemains[a][b][i] = 1;
-        //                     usedIndex[i][0][0]++;
-        //                     usedIndex[i][1][b] = 1;
-        //                     usedIndex[i][2][a] = 1;
+                if (countRemains == 3)
+                {
+                    for (int i = 0; i < size; i++)
+                    {
+                        if (gridRemains[a][b][i] == 0)
+                        {
+                            grid[a][b] = i + 1;
+                            gridRemains[a][b][i] = 1;
+                            usedIndex[i][0][0]++;
+                            usedIndex[i][1][b] = 1;
+                            usedIndex[i][2][a] = 1;
 
-        //                     int coordsX = a;
-        //                     int coordsY = b;
+                            int coordsX = a;
+                            int coordsY = b;
                             
-        //                     // Add Remains To Horizontal
-        //                     for(int x = 0; x < size; x++)
-        //                     {
-        //                         if(x == coordsX)
-        //                         {
-        //                             for(int y = 0; y < size; y++)
-        //                             {
-        //                                 gridRemains[x][coordsY][y] = 1;
-        //                             }
-        //                         }
-        //                         else
-        //                         {
-        //                             gridRemains[x][coordsY][i] = 1;
-        //                         }
-        //                     }
+                            // Add Remains To Horizontal
+                            for(int x = 0; x < size; x++)
+                            {
+                                if(x == coordsX)
+                                {
+                                    for(int y = 0; y < size; y++)
+                                    {
+                                        gridRemains[x][coordsY][y] = 1;
+                                    }
+                                }
+                                else
+                                {
+                                    gridRemains[x][coordsY][i] = 1;
+                                }
+                            }
 
-        //                     // Add Remains to Vertical
-        //                     for(int x = 0; x < size; x++)
-        //                     {
-        //                         if(x == coordsY)
-        //                         {
-        //                             for(int y = 0; y < size; y++)
-        //                             {
-        //                                 gridRemains[coordsX][x][y] = 1;
-        //                             }
-        //                         }
-        //                         else
-        //                         {
-        //                             gridRemains[coordsX][x][i] = 1;
-        //                         }
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
+                            // Add Remains to Vertical
+                            for(int x = 0; x < size; x++)
+                            {
+                                if(x == coordsY)
+                                {
+                                    for(int y = 0; y < size; y++)
+                                    {
+                                        gridRemains[coordsX][x][y] = 1;
+                                    }
+                                }
+                                else
+                                {
+                                    gridRemains[coordsX][x][i] = 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     // }
 
     // Check usedIndex
